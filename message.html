@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الرسائل المستلمة</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 p-6">
+
+  <div class="max-w-3xl mx-auto bg-white shadow rounded-lg p-6">
+    <h2 class="text-2xl font-bold mb-4 text-center text-blue-600">الرسائل المستلمة</h2>
+    <div id="messagesContainer" class="space-y-4"></div>
+    <div class="text-center mt-6">
+      <a href="contact.html" class="text-blue-500 underline">العودة للتواصل</a>
+    </div>
+  </div>
+
+  <script>
+    const messages = JSON.parse(localStorage.getItem("messages") || "[]");
+    const container = document.getElementById("messagesContainer");
+
+    if (messages.length === 0) {
+      container.innerHTML = "<p class='text-center text-gray-500'>لا توجد رسائل بعد.</p>";
+    } else {
+      messages.reverse().forEach(msg => {
+        container.innerHTML += `
+          <div class="border p-4 rounded bg-gray-100">
+            <p><strong>المرسل:</strong> ${msg.name} (${msg.email})</p>
+            <p><strong>إلى:</strong> ${msg.receiver}</p>
+            <p><strong>التاريخ:</strong> ${msg.time}</p>
+            <p class="mt-2"><strong>الرسالة:</strong><br>${msg.message}</p>
+          </div>`;
+      });
+    }
+  </script>
+
+</body>
+</html>

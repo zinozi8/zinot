@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>متقن سيدي علي مبارك</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <script>
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle("dark");
+      const icon = document.getElementById("theme-icon");
+      icon.classList.toggle("sun");
+      icon.classList.toggle("moon");
+    }
+  </script>
+  <style>
+    .sun::before { content: "☀️"; }
+    .moon::before { content: "🌙"; }
+  </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors font-sans">
+
+  <header class="p-4 flex justify-between items-center shadow-md bg-white dark:bg-gray-800 sticky top-0 z-50">
+    <div class="text-xl font-extrabold tracking-wide flex items-center gap-2">
+      <span>متقن سيدي علي مبارك</span>
+      <span class="text-blue-500 text-2xl">|</span>
+      <span class="text-sm text-gray-500 dark:text-gray-400">منصة تعليمية تفاعلية</span>
+    </div>
+    <button onclick="toggleDarkMode()" class="text-xl p-2 rounded-full bg-gray-100 dark:bg-gray-700 shadow">
+      <span id="theme-icon" class="moon"></span>
+    </button>
+  </header>
+
+  <section class="text-center px-6 py-20 bg-gradient-to-b from-white dark:from-gray-900 to-gray-100 dark:to-gray-800">
+    <h1 class="text-5xl font-bold mb-6">مرحبا بكم في <span class="text-blue-600">متقن سيدي علي مبارك</span></h1>
+    <p class="text-lg max-w-xl mx-auto mb-10 leading-relaxed text-gray-700 dark:text-gray-300">
+      منصة تعليمية تجمع بين الحداثة والإبداع لتسهيل الوصول إلى الدروس والموارد التعليمية.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center">
+      <a href="login.html" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold transition shadow">تسجيل الدخول</a>
+      <a href="signup.html" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-semibold transition shadow">إنشاء حساب</a>
+      <a href="years.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition shadow">دخول إلى الموقع</a>
+      <a href="contact.html" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-semibold transition shadow">التواصل مع الإدارة والأساتذة</a>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 dark:bg-gray-900 py-12 px-6 text-center">
+    <h2 class="text-2xl font-bold mb-4 text-blue-600">ماذا نقدم؟</h2>
+    <p class="mb-2 text-gray-700 dark:text-gray-300">معلومات الموقع: دروس، اختبارات، تمارين، فيديوهات تعليمية</p>
+    <p class="mb-2 text-gray-700 dark:text-gray-300">تواصل معنا بسهولة لأي استفسار أو ملاحظات</p>
+    <p class="text-gray-700 dark:text-gray-300">قدم اقتراحاتك وساهم في تطوير المحتوى التعليمي</p>
+  </section>
+
+  <footer class="bg-white dark:bg-gray-800 text-center py-4 border-t dark:border-gray-700">
+    <p class="text-sm text-gray-600 dark:text-gray-400">جميع الحقوق محفوظة &copy; 2025 متقن سيدي علي مبارك</p>
+  </footer>
+
+</body>
+</html>

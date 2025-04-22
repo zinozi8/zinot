@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أقوال وحكم</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white flex flex-col items-center justify-center min-h-screen px-4">
+
+  <h1 class="text-4xl font-bold mb-6">حكمة اليوم</h1>
+
+  <div id="quoteBox" class="bg-gray-100 dark:bg-gray-800 text-xl text-center p-6 rounded-xl shadow-lg max-w-2xl">
+    <!-- سيتم عرض الحكمة هنا -->
+  </div>
+
+  <button onclick="showRandomQuote()" class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full transition">
+    عرض حكمة جديدة
+  </button>
+
+  <script>
+    const quotes = [
+      "من جد وجد ومن زرع حصد.",
+      "العلم نور والجهل ظلام.",
+      "النجاح لا يأتي إلا لمن يستحقه.",
+      "التعليم سلاح المستقبل.",
+      "افعل الخير ولو في غير موضعه.",
+      "العقل زينة والجهل مهانة.",
+      "ليس الفخر أن لا تسقط، بل أن تنهض كلما سقطت.",
+      "من طلب العلا سهر الليالي.",
+      "اعمل بصمت، ودع نجاحك يتكلم.",
+      "كلما قرأت أكثر، عرفت أكثر."
+    ];
+
+    function showRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quoteBox').textContent = quotes[randomIndex];
+    }
+
+    // عرض حكمة عشوائية عند تحميل الصفحة
+    window.onload = showRandomQuote;
+  </script>
+</body>
+</html>

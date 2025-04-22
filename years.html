@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>السنوات الدراسية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      background: #f0f0f0;
+      color: #2c3e50;
+    }
+
+    header {
+      background: linear-gradient(to left, #1e3c72, #2a5298);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 26px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .year {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 20px;
+      border: 2px solid #2a5298;
+      transition: background 0.3s;
+    }
+
+    .year:hover {
+      background: #eaf0ff;
+    }
+
+    .branch-container, .subject-container {
+      padding-right: 20px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .branch {
+      background-color: #f9f9f9;
+      padding: 12px 18px;
+      margin: 5px 0;
+      border-radius: 8px;
+      font-weight: bold;
+      border-right: 4px solid #1e3c72;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .branch:hover {
+      background-color: #ecf4ff;
+    }
+
+    .subject {
+      background-color: #ffffff;
+      margin: 5px 0 5px 15px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .subject:hover {
+      background: #f0f8ff;
+    }
+
+    .video-box {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .video-box img {
+      max-width: 100%;
+      border: 3px solid #1e3c72;
+      border-radius: 10px;
+    }
+
+    .nav-btn {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    .nav-btn button {
+      background: #1e3c72;
+      color: white;
+      padding: 10px 20px;
+      margin: 8px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .nav-btn button:hover {
+      background: #344e8d;
+    }
+
+    @media (max-width: 600px) {
+      .year, .branch, .subject {
+        font-size: 16px;
+      }
+
+      .nav-btn button {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>السنوات الدراسية - متقن سيدي علي مبارك</header>
+
+  <div class="container" id="content"></div>
+
+  <div class="video-box" id="videoBox"></div>
+
+  <div class="nav-btn">
+    <button onclick="location.href='hikma.html'">أقوال وحكم</button>
+    <button onclick="location.href='index.html'">الصفحة الرئيسية</button>
+  </div>
+
+  <script>
+    const data = {
+      "الأولى ثانوي": {
+        "علوم": ["رياضيات", "علوم طبيعية"],
+        "آداب": ["لغة عربية", "تاريخ"]
+      },
+      "الثانية ثانوي": {
+        "رياضيات": ["رياضيات", "فيزياء"],
+        "لغات": ["إنجليزية", "إسبانية"],
+        "آداب وفلسفة": ["فلسفة", "تاريخ"],
+        "تقني رياضي": ["رسم تقني", "فيزياء"],
+        "تسيير واقتصاد": ["اقتصاد", "محاسبة"],
+        "علوم تجريبية": ["علوم", "رياضيات"]
+      },
+      "الثالثة ثانوي": {
+        "رياضيات": ["رياضيات", "فيزياء"],
+        "لغات": ["أدب إنجليزي", "إسبانية"],
+        "آداب وفلسفة": ["فلسفة", "تاريخ"],
+        "تقني رياضي": ["رسم هندسي", "كهرباء"],
+        "تسيير واقتصاد": ["تسيير", "محاسبة"],
+        "علوم تجريبية": ["رياضيات", "علوم"]
+      }
+    };
+
+    const content = document.getElementById('content');
+
+    for (let year in data) {
+      const yearDiv = document.createElement('div');
+      yearDiv.className = 'year';
+      yearDiv.textContent = year;
+
+      const branchContainer = document.createElement('div');
+      branchContainer.className = 'branch-container';
+
+      for (let branch in data[year]) {
+        const branchDiv = document.createElement('div');
+        branchDiv.className = 'branch';
+        branchDiv.textContent = branch;
+
+        const subjectContainer = document.createElement('div');
+        subjectContainer.className = 'subject-container';
+
+        data[year][branch].forEach(subject => {
+          const subjectDiv = document.createElement('div');
+          subjectDiv.className = 'subject';
+          subjectDiv.textContent = subject;
+          subjectDiv.onclick = () => showVideo(subject);
+          subjectContainer.appendChild(subjectDiv);
+        });
+
+        branchDiv.onclick = function () {
+          subjectContainer.style.display = (subjectContainer.style.display === 'block') ? 'none' : 'block';
+        };
+
+        branchContainer.appendChild(branchDiv);
+        branchContainer.appendChild(subjectContainer);
+      }
+
+      yearDiv.onclick = function () {
+        branchContainer.style.display = (branchContainer.style.display === 'block') ? 'none' : 'block';
+      };
+
+      content.appendChild(yearDiv);
+      content.appendChild(branchContainer);
+    }
+
+    function showVideo(subject) {
+      const box = document.getElementById('videoBox');
+      box.innerHTML = `
+        <h2>${subject}</h2>
+        <img src="https://via.placeholder.com/640x360/ffffff/000000?text=${encodeURIComponent(subject)}" alt="${subject}">
+      `;
+      box.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+
+</body>
+</html>
